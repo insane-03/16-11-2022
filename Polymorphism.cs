@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,18 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Csharp_OOP
-{
-    internal class Polymorphism
+{   public class PolymorphismBase
     {
-
+        public virtual void Display()
+        {
+            Console.WriteLine("HEY THIS IS BASE CLASS DISPLAY");
+        }
+    }
+    public class Polymorphism : PolymorphismBase
+    {   
+        public override void Display()
+        {
+            Console.WriteLine("HEY THIS IS DERVIED CLASS DISPLAY");
+        }
         public Polymorphism() {
             Console.WriteLine("HI THIS IS POLYMORPHISM");
         }
 
-        static void DisplayName(string Name) {
+        public void DisplayName(string Name) {
             Console.WriteLine("HEY"+" " + Name+"\n");
         }
-        static void DisplayName(int Age) {
+        public void DisplayName(int Age) {
             Console.WriteLine("we added your age in our database: "+Age);
         }
 
@@ -28,8 +37,15 @@ namespace Csharp_OOP
             var Input1 = Console.ReadLine();
             Console.Write("Enter your Age:");
             var Input2 = Convert.ToInt32(Console.ReadLine());
-            DisplayName(Input1);
-            DisplayName(Input2);
+
+            Polymorphism obj = new Polymorphism();
+            PolymorphismBase obj1 = new PolymorphismBase();
+            Console.WriteLine("-------------------");
+            obj.DisplayName(Input1);
+            obj.DisplayName(Input2);
+            obj.Display();
+            obj1.Display();
+
 
             Console.ReadKey();
         }
